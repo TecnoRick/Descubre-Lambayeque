@@ -1,0 +1,603 @@
+:root {
+    --color-fondo: #fcfbf9; /* Arena del desierto ultra clara */
+    --color-texto: #1e252b; /* Azul pizarra oscuro, súper elegante y legible */
+    --color-primario: #070e14; /* Negro azulado místico (el espacio profundo) */
+    --color-acento: #bd9652; /* Oro moche puro */
+    --color-acento-brillante: #f3d39a; /* Oro pulido iluminado */
+    --color-borde: #e9e1d2; /* Paja suave para marcos minimalistas */
+    --blanco: #ffffff;
+    
+    /* Gradiente de Oro Líquido Moche */
+    --gradiente-oro: linear-gradient(135deg, #9a7432 0%, #cfa864 50%, #f1d7a5 100%);
+    --gradiente-oro-texto: linear-gradient(135deg, #bd9652 0%, #f3d39a 50%, #a37c3a 100%);
+    
+    /* Tipografías */
+    --fuente-titulos: 'Playfair Display', serif;
+    --fuente-textos: 'Lato', sans-serif;
+    
+    /* Animación Premium (Cubic-Bezier ultra-reponsiva) */
+    --transicion-premium: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --- RESETEO DE NAVEGADOR --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--fuente-textos);
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.8;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- HERO MONUMENTAL CON PARALLAX --- */
+.hero {
+    position: relative;
+    height: 100vh;
+    background-image: url('img/Muelle de Pimentel.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(7, 14, 20, 0.4) 0%, rgba(7, 14, 20, 0.95) 100%);
+    z-index: 1;
+}
+
+/* --- NAVBAR FLOATING PREMIUM --- */
+.navbar {
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 8%;
+    background-color: rgba(7, 14, 20, 0.8);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(189, 150, 82, 0.15);
+    transition: var(--transicion-premium);
+}
+
+.navbar .logo {
+    font-family: var(--fuente-titulos);
+    font-weight: 800;
+    font-size: 1.8rem;
+    letter-spacing: 5px;
+    background: var(--gradiente-oro-texto);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Efecto Logo de Oro */
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+.navbar a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    position: relative;
+    padding: 6px 0;
+    transition: var(--transicion-premium);
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    width: 0; height: 1.5px;
+    background: var(--gradiente-oro);
+    transition: var(--transicion-premium);
+    transform: translateX(-50%);
+}
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+.navbar a:hover {
+    color: var(--color-acento-brillante);
+}
+
+/* --- CONTENEDOR HERO TEXT --- */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    margin: auto;
+    text-align: center;
+    color: var(--blanco);
+    max-width: 950px;
+    padding: 80px 50px;
+    border: 1px solid rgba(189, 150, 82, 0.25);
+    background-color: rgba(7, 14, 20, 0.5);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+}
+
+/* Esquinas Mochicas en el Recuadro Principal de la Portada */
+.hero-content::before, .hero-content::after {
+    content: '';
+    position: absolute;
+    width: 25px; height: 25px;
+    border: 2px solid var(--color-acento);
+    pointer-events: none;
+}
+.hero-content::before { top: 15px; left: 15px; border-right: none; border-bottom: none; }
+.hero-content::after { bottom: 15px; right: 15px; border-left: none; border-top: none; }
+
+.hero-content h1 {
+    font-family: var(--fuente-titulos);
+    font-size: 5.5rem;
+    font-weight: 800;
+    margin-bottom: 25px;
+    letter-spacing: 5px;
+    line-height: 1.1;
+    background: var(--gradiente-oro-texto);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    font-weight: 300;
+    font-style: italic;
+    color: #e2e8f0;
+}
+
+/* --- CONTENEDORES --- */
+.container {
+    width: 88%;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+/* --- ENCABEZADOS DE SECCIÓN REALEZADOS --- */
+.section-header {
+    text-align: center;
+    margin-bottom: 90px;
+}
+
+.section-header h2 {
+    font-family: var(--fuente-titulos);
+    font-size: 3.2rem;
+    color: var(--color-primario);
+    font-weight: 800;
+    letter-spacing: 3px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 25px;
+}
+
+.section-header h2::after {
+    content: '◈';
+    position: absolute;
+    bottom: -15px; left: 50%;
+    transform: translateX(-50%);
+    color: var(--color-acento);
+    font-size: 1.4rem;
+    background-color: var(--color-fondo);
+    padding: 0 20px;
+    z-index: 2;
+}
+
+.section-header h2::before {
+    content: '';
+    position: absolute;
+    bottom: -3px; left: 0;
+    width: 100%; height: 1px;
+    background: linear-gradient(to right, transparent, var(--color-acento), transparent);
+}
+
+/* --- HISTORIA CON DISEÑO EDITORIAL LUXURY --- */
+.info-section {
+    padding: 140px 0;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.marco-imagen {
+    border: 1px solid var(--color-borde);
+    padding: 25px;
+    background-color: var(--blanco);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.05);
+    position: relative;
+    transition: var(--transicion-premium);
+}
+
+/* Decoraciones en las esquinas de la foto de Historia */
+.marco-imagen::before {
+    content: '';
+    position: absolute;
+    top: 12px; left: 12px; right: 12px; bottom: 12px;
+    border: 1px solid rgba(189, 150, 82, 0.2);
+    pointer-events: none;
+    transition: var(--transicion-premium);
+}
+
+.marco-imagen:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 50px 100px rgba(189, 150, 82, 0.1);
+    border-color: var(--color-acento);
+}
+
+.main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transicion-premium);
+    filter: sepia(20%) contrast(1.05);
+    border: 1px solid var(--color-borde);
+}
+
+.marco-imagen:hover .main-image {
+    filter: sepia(0%) contrast(1);
+    transform: scale(1.01);
+}
+
+.text-content p {
+    margin-bottom: 35px;
+    font-size: 1.25rem;
+    color: #434d56;
+    text-align: justify;
+    line-height: 1.9;
+}
+
+/* --- BOTÓN CON EFECTO DE DESTELLO INFINITO (GOLDEN SHINE) --- */
+.btn {
+    display: inline-block;
+    padding: 18px 45px;
+    background-color: var(--color-primario);
+    color: var(--blanco);
+    border: 1px solid var(--color-acento);
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: var(--transicion-premium);
+}
+
+/* Animación del Destello Dorado */
+.btn::after {
+    content: '';
+    position: absolute;
+    top: -50%; left: -60%;
+    width: 30%; height: 200%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.35), transparent);
+    transform: rotate(30deg);
+    transition: none;
+}
+
+.btn:hover::after {
+    left: 150%;
+    transition: all 0.8s ease-in-out; /* Al pasar el mouse cruza un destello pro */
+}
+
+.btn:hover {
+    background-color: var(--color-acento);
+    color: var(--color-primario);
+    box-shadow: 0 15px 30px rgba(189, 150, 82, 0.3);
+}
+
+/* --- ESTADÍSTICAS --- */
+.stats {
+    grid-column: span 2;
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--blanco);
+    padding: 50px;
+    border: 1px solid var(--color-borde);
+    box-shadow: 0 30px 70px rgba(0,0,0,0.03);
+    position: relative;
+    margin-top: 80px;
+}
+
+.stats::before {
+    content: '';
+    position: absolute;
+    top: 15px; left: 15px; right: 15px; bottom: 15px;
+    border: 1px dashed rgba(189, 150, 82, 0.4);
+    pointer-events: none;
+}
+
+.stat-item h3 {
+    font-family: var(--fuente-titulos);
+    background: var(--gradiente-oro-texto);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.9rem;
+    margin-bottom: 10px;
+}
+
+.stat-item p {
+    font-weight: 700;
+    color: var(--color-primario);
+    font-size: 1.15rem;
+}
+
+/* --- FRASE DEL MUSEO NACIONAL --- */
+.quote-container {
+    padding: 100px 0;
+}
+
+.quote-box {
+    border: 1px solid var(--color-borde);
+    padding: 90px 60px;
+    text-align: center;
+    position: relative;
+    background-color: var(--blanco);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.02);
+}
+
+.quote-box::after {
+    content: '';
+    position: absolute;
+    top: 20px; left: 20px; right: 20px; bottom: 20px;
+    border: 1px solid var(--color-acento);
+    pointer-events: none;
+}
+
+.quote-box p {
+    font-family: var(--fuente-titulos);
+    font-size: 2.4rem;
+    font-style: italic;
+    color: var(--color-primario);
+    max-width: 950px;
+    margin: 0 auto 35px;
+    line-height: 1.6;
+}
+
+.quote-box span {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: var(--color-acento);
+    font-size: 0.95rem;
+}
+
+/* --- GRID DE TARJETAS CON EFECTO BRILLO INVISIBLE --- */
+.cards-section {
+    padding: 140px 0;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 45px;
+}
+
+.card {
+    background-color: var(--blanco);
+    border: 1px solid var(--color-borde);
+    padding: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.01);
+    transition: var(--transicion-premium);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.card-image-wrapper {
+    overflow: hidden;
+    border: 1px solid var(--color-borde);
+    position: relative;
+    aspect-ratio: 4 / 3;
+}
+
+.card-image-wrapper img {
+    transition: var(--transicion-premium);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(15%) contrast(1.02);
+}
+
+.card:hover .card-image-wrapper img {
+    transform: scale(1.1) rotate(0.5deg);
+    filter: grayscale(0%) contrast(1);
+}
+
+.card-text {
+    padding: 30px 10px 10px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-text h3 {
+    font-family: var(--fuente-titulos);
+    color: var(--color-primario);
+    margin-bottom: 15px;
+    font-size: 1.6rem;
+    transition: var(--transicion-premium);
+}
+
+.card-text p {
+    font-size: 1.05rem;
+    color: #616e79;
+    line-height: 1.7;
+}
+
+/* EFECTOS DE CURSOR SOBRE TARJETAS (Efecto Oro Glow) */
+.card:hover {
+    transform: translateY(-12px);
+    border-color: var(--color-acento);
+    box-shadow: 0 30px 60px rgba(189, 150, 82, 0.18); /* Brillo dorado místico alrededor */
+}
+
+.card:hover .card-text h3 {
+    color: var(--color-acento);
+}
+
+/* --- SECCIÓN GASTRONÓMICA OSCURA (NIVEL BLACK CARD) --- */
+.dark-section {
+    background-color: var(--color-primario);
+    padding: 140px 0;
+    margin: 100px 0;
+    border-top: 3px solid var(--color-acento);
+    border-bottom: 3px solid var(--color-acento);
+    position: relative;
+}
+
+.dark-section .section-header h2 {
+    color: var(--blanco);
+    background: var(--gradiente-oro-texto);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.dark-section .section-header h2::after {
+    background-color: var(--color-primario);
+}
+
+.dark-card {
+    background-color: #0b141b;
+    border-color: rgba(189, 150, 82, 0.25);
+}
+
+.dark-card .card-image-wrapper {
+    border-color: rgba(189, 150, 82, 0.2);
+}
+
+.dark-card .card-text h3 {
+    color: var(--blanco);
+}
+
+.dark-card .card-text p {
+    color: #a0b2bf;
+}
+
+.dark-card:hover {
+    border-color: var(--color-acento-brillante);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.65), 0 0 25px rgba(189, 150, 82, 0.1);
+}
+
+/* --- FOOTER IMPERIAL --- */
+.footer {
+    background-color: #03060a;
+    color: #8c9da9;
+    padding: 120px 8% 50px;
+    border-top: 1px solid rgba(189, 150, 82, 0.25);
+}
+
+.footer h3 {
+    font-family: var(--fuente-titulos);
+    color: var(--blanco);
+    margin-bottom: 35px;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    position: relative;
+    background: var(--gradiente-oro-texto);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.footer h3::after {
+    content: '';
+    position: absolute;
+    bottom: -10px; left: 0;
+    width: 50px; height: 1.5px;
+    background: var(--gradiente-oro);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 70px;
+    margin-bottom: 80px;
+}
+
+.footer-grid p {
+    line-height: 1.9;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 18px;
+}
+
+.footer-links a {
+    color: #8c9da9;
+    text-decoration: none;
+    font-size: 1.05rem;
+    transition: var(--transicion-premium);
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: var(--color-acento-brillante);
+    transform: translateX(10px);
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 50px;
+    border-top: 1px solid rgba(255, 255, 255, 0.02);
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    color: #4f5f6c;
+}
+
+/* --- ADAPTABILIDAD TOTAL (RESPONSIVE) --- */
+@media (max-width: 992px) {
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+    .hero-content h1 {
+        font-size: 4.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        width: 95%;
+        padding: 50px 25px;
+    }
+    .hero-content h1 {
+        font-size: 3.2rem;
+    }
+    .navbar {
+        padding: 20px 5%;
+    }
+    .navbar ul {
+        display: none; /* Mantiene la estética limpia sin romper el menú en celulares */
+    }
+    .stats {
+        flex-direction: column;
+        gap: 40px;
+        padding: 35px 25px;
+    }
+}
